@@ -388,7 +388,6 @@ domReady(function () {
             }
         </style>
         <script src="https://unpkg.com/html5-qrcode"></script>
-        <script src="script.js"></script>
         <script>
             function domReady(fn) {
                 if (
@@ -402,16 +401,23 @@ domReady(function () {
             }
         
             domReady(function () {
+                // Flag to track if redirection has occurred
+                let redirectionOccurred = false;
         
                 // If found your qr code
                 function onScanSuccess(decodeText, decodeResult) {
-                    const redirectURL = decodeText;
-                
-                    // Use setTimeout to delay the execution of the function
-                    setTimeout(function () {
-                        // Redirect the user to the specified URL after 10 seconds
-                        window.location.href = redirectURL;
-                    }, 2000); // 10000 milliseconds (10 seconds)
+                    if (!redirectionOccurred) {
+                        const redirectURL = decodeText;
+        
+                        // Set the flag to prevent multiple redirections
+                        redirectionOccurred = true;
+        
+                        // Use setTimeout to delay the execution of the function
+                        setTimeout(function () {
+                            // Redirect the user to the specified URL after 2 seconds
+                            window.location.href = redirectURL;
+                        }, 2000); // 2000 milliseconds (2 seconds)
+                    }
                 }
         
                 let htmlscanner = new Html5QrcodeScanner(
@@ -423,6 +429,7 @@ domReady(function () {
                 htmlscanner.render(onScanSuccess);
             });
         </script>
+        
         
         </div>
 
