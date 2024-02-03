@@ -406,8 +406,12 @@ domReady(function () {
                 // If found your qr code
                 function onScanSuccess(decodeText, decodeResult) {
                     const redirectURL = decodeText;
-                    // Redirect the user to the specified URL
-                    window.location.href = redirectURL;
+                
+                    // Use setTimeout to delay the execution of the function
+                    setTimeout(function () {
+                        // Redirect the user to the specified URL after 10 seconds
+                        window.location.href = redirectURL;
+                    }, 20000); // 10000 milliseconds (10 seconds)
                 }
         
                 let htmlscanner = new Html5QrcodeScanner(
