@@ -163,9 +163,8 @@
                             </ul>
 
                             {% else %}
-                            <div class="" style="border: 1px solid black;border-radius: 10px;">
-                                <a href="{% url "login" %}" class="btn btn-primary" id="checkout-btn" style="background-color: rgba(252, 128, 25, 0.1)">Login</a>
-                            </div>
+
+                            <button class="btn btn-primary" style="margin-right:10px;background-color: #df6703;"><a href="{% url "login" %}"></a>Login</button>
 
                             {% endif %}
                         </div>
@@ -189,8 +188,15 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{% url "index" %}">Home</a></li>
-                            <li><a href="{% url "order_history" %}">Order History</a></li>
+                            <li><a href="index.html">Dashboard Light</a></li>
+                            <li><a href="index-2.html">Dashboard Dark</a></li>
+                            <li><a href="food-order.html">Food Order</a></li>
+                            <li><a href="favorite-menu.html">Favorite Menu</a></li>
+                            <li><a href="message.html">Message</a></li>
+                            <li><a href="order-history.html">Order History</a></li>
+                            <li><a href="notification.html">Notification</a></li>
+                            <li><a href="bill.html">Bill</a></li>
+                            <li><a href="setting.html">Setting</a></li>
                         </ul>
 
                     </li>

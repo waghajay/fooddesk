@@ -11,7 +11,7 @@ from .models import YourOrderModel, OrderItem,CompletedOrder, CompleteOrderItem
 from Admin_Panel.models import Notification,Table
 import jwt
 from django.conf import settings
-Table
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 
@@ -25,6 +25,7 @@ def ProductDetails(request,id):
     return render(request,"Menu/product_details.html",{"items":item})
 
 
+User = get_user_model()
 
 @csrf_exempt
 @require_POST
