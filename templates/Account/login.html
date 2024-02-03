@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FoodDesk - Online Food Delivery Admin Dashboard" />
+    <meta property="og:title" content="FoodDesk - Online Food Delivery Admin Dashboard" />
+    <meta property="og:description" content="FoodDesk - Online Food Delivery Admin Dashboard" />
+    <meta property="og:image" content="https://fooddesk.dexignlab.com/xhtml/social-image.png" />
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- PAGE TITLE HERE -->
+    <title>FoodDesk - Online Food Delivery Admin Dashboard</title>
+
+    <!-- FAVICONS ICON -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'global/images/favicon.png'%}" />
+    <!-- <link href="{% static 'global/vendor/swiper/css/swiper-bundle.min.css'%}" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+    <link href="{% static 'global/css/style.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body class="body">
+    <div class="container mt-0">
+        <div class="row align-items-center justify-contain-center">
+            <div class="col-xl-12 mt-5">
+                <div class="card border-0">
+                    <div class="card-body login-bx">
+                        <div class="row  mt-5">
+                            <div class="col-xl-8 col-md-6 sign text-center">
+                                <div>
+                                    <img src="{% static 'global/images/login-img/pic-5.jpg'%}" class="food-img" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6 pe-0">
+                                <div class="sign-in-your">
+                                    <div class="text-center mb-3">
+                                        <img src="{% static 'global/images/logo-full.png'%}" class="mb-3" alt="">
+                                        <h4 class="fs-20 font-w800 text-black">Login an Account</h4>
+                                        <span class="dlab-sign-up">Sign Up</span>
+                                    </div>
+                                    {% if messages %}
+                                    <div class="alert alert-info alert-message">
+                                        {% for message in messages %}
+                                        {{ message }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                    <form action="{% url 'login' %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label class="mb-1" for="email"><strong>Email Address</strong></label>
+                                            <input type="text" name="email" id="email" class="form-control" placeholder="hello@example.com" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="mb-1"><strong>Password</strong></label>
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                                        </div>
+                                        <div class="row d-flex justify-content-between mt-4 mb-2">
+                                            <div class="mb-3">
+                                                <a href="#">Forgot Password?</a>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-block shadow">Log Me In</button>
+                                        </div>
+                                    </form>
+                                    
+                                    <div class="text-center my-3">
+                                        <span class="dlab-sign-up style-1">continue With</span>
+                                    </div>
+                                    <div class="mb-3 dlab-signup-icon">
+                                        <a href="{% url 'social:begin' 'facebook' %}">
+                                        <button class="btn btn-outline-light"><i class="fa-brands fa-facebook me-2 facebook"></i>Facebook</button></a>
+                                        <a href="{% url 'social:begin' 'google-oauth2' %}">
+                                        <button class="btn btn-outline-light"><i class="fa-brands fa-google me-2 google"></i>Google</button>
+                                        </a>
+                                    </div>
+                                    <div class="text-center">
+                                        <span>Create An Account?<a href="{% url 'register' %}" class="text-primary"> Sign in</a></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .alert-message{
+            text-align: center;
+            font-size: 17px;
+        }
+    </style>
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="{% static 'global/vendor/global/global.min.js'%}"></script>
+    <script src="{% static 'global/vendor/swiper/js/swiper-bundle.min.js'%}"></script>
+    <script src="{% static 'global/js/dlabnav-init.js'%}"></script>
+    <script src="{% static 'global/js/styleSwitcher.js'%}"></script>
+</body>
+
+</html>
+
+
+
+<!-- <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBwS7QOysKfNkro_tzwbxlb-069tqXN--E",
+      authDomain: "fooddesk-d8e75.firebaseapp.com",
+      projectId: "fooddesk-d8e75",
+      storageBucket: "fooddesk-d8e75.appspot.com",
+      messagingSenderId: "611441763159",
+      appId: "1:611441763159:web:4610cbea172578d7791412",
+      measurementId: "G-WGM3Z49JNF"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script> -->

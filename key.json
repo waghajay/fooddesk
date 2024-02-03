@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "fooddesk-d8e75",
+  "private_key_id": "304ec10185c86616817097c3d72f9b4743cf6992",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCs7JzS8zT29fMh\nTcEsyycpmUwQNGiP+G7py027un6Dl9lCNaC63JxUj2h5kLt02Maw2GFxODOh8RoU\n3eTNZaynOYPxVe2QV7AOs1kwVSHQ13iiOCDwQMW5Qm7PZE/wrQiVWpYD++ZrqgJh\ntfHrq/xUmMpbQYJJnbNFfI4dpWKI9kz65R2obJG1znV08LVLjS81Yo0eoDm8djDk\nSKb7ZsTIe7Ind2KPk0ehb5UyvEqQbYNNXM9Dfmbf6ph+wi2/B7yJLVr2WqllSLTs\nNEw98XqIejlPjCDHfF4sh4y5BMKV7Nu4XFChVGh1kRm6z3kGOQG7x3aD3jwFgons\nfT0BEMbBAgMBAAECggEAThvAiI6fnW+h5yiqeZO3+FPMpkMt+d4DJ2qUDZhjHgig\nc4YquEz+9jkivUpxSgnC0c2jUhNLSzpPCB7kgxyKfKx/myqvmHPrS/CZ+Dl0AVPa\noxeMVUlEpnZJ/Da43yMhjejxexI01evgkIcxI703SHUNbmPsOFlZySjGPsDd/bPX\ndmT8FrwWSWfMZa4Bl0GqPEi7rMTzBLFvVLsIcVv8Iud/xXsuVvflBGr0hX5pB07f\nftQAI0lSF5rWWMH+QBrM/+7n/79HaVKnRSzGc0MYVlRxbS+APrQEMGekszagO/Bj\nI7NINVvkWIELeQlQVHX4BrfWFh16zMA8rtpKDC5k6wKBgQDwVGW9EOpMqBT8YG+w\nIoKEFpPBIsDIct4Z81VSrpYesNeJ9wRedi7tX35E9OBSF8WvvIskybi71YJkxTa5\nSFa5jbT1Fb1zjVkqe1E9mZT87DyvYc9voDaAnH7pZYqmjYXIoXhLVQNwaFMDScu3\nYXIZxBUnC9AynCf1PWJ+XSVWBwKBgQC4MxQeCRohnmu1UT5UU05gnD3mu1u4ImKF\nFpvqJdXNkRUxQbuI4MbAxqUqK2woOkDHj4azpPFiaE1rfFlhDFfeNZbmVimwp/GK\nvsCdo61+ru0VwXgRKke2djVLgN354s4EyhFOakAMKu1twSTQck85LtCyUuB511Q/\nLDAt7j2K9wKBgCyzphDaupnzkaO31E5wvNIQ2P7Nlgoyw3kUN8SfULD4t76jwZ5I\nYUYpwvTUj3z1iwG7Ei6PjtrxRcW0oQ8pk2gEIaqMlqaNng42zc+lZ377+fWtPcZH\niJu3gCuthXKhVEcTMarhbzhTT02HRmsfpvd/72dJ3TnsrcoB1vYmITG1AoGBAK9Q\nrk0IDL8CsTEZ6mEICQkarC/3EwzmbS6Onkb1S9EjzS/ciEl25rSEXJ8ORRrkltNZ\nX7OLwdMPwuASsl8UCG2OQ9lnGLbyoYqUk292YaK5ix2xzj1IKIkZaRA7zwoPPFaC\nnIYtylfKY8CanBdpNM4QKMIQ72YH9D9MJ28P2bNxAoGBAOXj0olFqB1DyIhONt9W\n7ioyGZ5qxY48OU3Q+gO31te6aSoV6yhTyNqTBdKaQqGKstjVFz4rFIUeRxgx5UD8\n4WdXM8QsRsVn8OepTzV+XMjQAEm1DB8pE0oW3HyYPf8ccOS0IPxr451A3KiSKVPU\ng2ZqrEep2z5eBH/LuQ9mw6yA\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-3dd7u@fooddesk-d8e75.iam.gserviceaccount.com",
+  "client_id": "108054954923802322763",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-3dd7u%40fooddesk-d8e75.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+         <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="FoodDesk - Online Food Delivery Admin Dashboard" />
+	<meta property="og:title" content="FoodDesk - Online Food Delivery Admin Dashboard" />
+	<meta property="og:description" content="FoodDesk - Online Food Delivery Admin Dashboard" />
+	<meta property="og:image" content="https://fooddesk.dexignlab.com/xhtml/social-image.png" />
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- PAGE TITLE HERE -->
+		<title>FoodDesk - Online Food Delivery Admin Dashboard</title>
+	
+	<!-- FAVICONS ICON -->
+	<link rel="shortcut icon" type="image/png" href="{% static 'global/images/favicon.png'%}" />
+    <link href="{% static 'global/vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">
+     <link href="{% static 'global/vendor/swiper/css/swiper-bundle.min.css" rel="stylesheet' %}">
+<link href="{% static 'global/css/style.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body class="vh-100">
+    <div class="authincation ">
+        <div class="container">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="authincation-content">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+									<div class="text-center mb-3">
+										<a href="index.html"><img src="{% static 'global/images/logo-full.png' %}" alt=""></a>
+									</div>
+                                    <h4 class="text-center mb-4">Create your account</h4>
+                                    {% if messages %}
+                                    <div class="alert alert-info alert-message" style="text-align: center;font-size:18px">
+                                        {% for message in messages %}
+                                        {{ message }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                    <form action="{% url 'register' %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label class="mb-1" for="username"><strong>Username</strong></label>
+                                            <input type="text" class="form-control" name="username" id="username" placeholder="username" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1" for="email"><strong>Email</strong></label>
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="hello@example.com" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1" for="password"><strong>Password</strong></label>
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                        </div>
+                                        <div class="text-center mt-4">
+                                            <button type="submit" class="btn btn-primary btn-block">Register me</button>
+                                        </div>
+                                    </form>
+                                    <div class="text-center my-3">
+                                        <span class="dlab-sign-up style-1">continue With</span>
+                                    </div>
+                                    <div class="mb-3 dlab-signup-icon" style="display: flex;justify-content: center;">
+                                        <a href="{% url 'social:begin' 'facebook' %}">
+                                        <button class="btn btn-outline-light" ><i style="color:blue;background-color:white" class="fa-brands fa-facebook me-2 facebook" ></i>Facebook</button></a>
+                                        <a href="{% url 'social:begin' 'google-oauth2' %}">
+                                        <button class="btn btn-outline-light" style="color:#7E808C;"><i style="color:red;background-color:white" class="fa-brands fa-google me-2 google"></i>Google</button>
+                                        </a>
+
+                                    </div>
+                                    <div class="text-center">
+                                        <span>Login An Account?<a href="{% url 'login' %}" class="text-primary"> Login in</a></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--**********************************
+	Scripts
+***********************************-->
+<!-- Required vendors -->
+<script src="{% static 'global/vendor/global/global.min.js' %}"></script>
+<script src="{% static 'global/vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'global/js/dlabnav-init.js' %}"></script>
+<script src="{% static 'global/js/styleSwitcher.js' %}"></script>
+</body>
+</html>

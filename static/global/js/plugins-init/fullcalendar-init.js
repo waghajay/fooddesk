@@ -1,0 +1,1 @@
+No Content: https://fooddesk.dexignlab.com/xhtml/js/plugins-init/fullcalendar-init.js
