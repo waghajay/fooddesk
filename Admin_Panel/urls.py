@@ -27,4 +27,7 @@ urlpatterns = [
     path("add_user/",AdminAddUser,name="AdminAddUser"),   
     
     path('update-order-status/', update_order_status, name='update_order_status'),
+    
+    path('store-fcm-token/', store_fcm_token, name='store_fcm_token'),
+    path('send/' , send_push),
 ]

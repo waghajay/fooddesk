@@ -88,6 +88,9 @@ def checkouterror(request):
     return render(request,'Menu/checkout_error.html')
 
 
+from Admin_Panel.models import FCMDevice
+from Admin_Panel.views import send_notification
+
 @csrf_exempt
 def complete_order(request):
     if request.method == 'POST':      
@@ -119,6 +122,14 @@ def complete_order(request):
                         price=item['price'],
                         total_price=item['total_price']
                     )
+                    
+                registration_ids = FCMDevice.objects.values_list('registration_id', flat=True)
+                
+                # Convert the QuerySet to a list
+                registration_ids = list(registration_ids)
+
+                if registration_ids:
+                    result = send_notification(registration_ids, 'New Order', f'New Order....\n Order Id :- {order.order_id}, Table Number :- {table_number}, Total Price :- {overall_total_price}, Payment Mode:- Cash, Payment Status :- Pending')
                 
                 notify = Notification.objects.create(order_id=order.order_id,table_number=table_number,total_price=overall_total_price,payment_mode="Cash",payment_status="Pending",status="Pending",message=f"New Order....\n Order Id :- {order.order_id}, Table Number :- {table_number}, Total Price :- {overall_total_price}, Payment Mode:- Cash, Payment Status :- Pending")
                 notify.save()
@@ -129,6 +140,9 @@ def complete_order(request):
                 yourordermodel_status_update = YourOrderModel.objects.get(order_id=s_id)
                 yourordermodel_status_update.order_status = "Complete"
                 yourordermodel_status_update.save()
+                
+
+                
 
                 return JsonResponse({'message': 'Order completed successfully With Cash Mode', 'order_id': order.order_id, 'redirect_url': reverse('order_history')})
             
@@ -148,6 +162,9 @@ def complete_order(request):
                         price=item['price'],
                         total_price=item['total_price']
                     )
+                    
+                if registration_ids:
+                    result = send_notification(registration_ids, 'Ajay Wagh', 'Mobile Alert')
                     
                 notify = Notification.objects.create(order_id=order.order_id,table_number=table_number,total_price=overall_total_price,payment_mode="Online",status="Pending",payment_status="Done",message=f"New Order....\n Order Id :- {order.order_id}, Table Number :- {table_number}, Total Price :- {overall_total_price}, Payment Mode:- Online, Payment Status :- Done")
                 notify.save()
@@ -209,3 +226,32 @@ def show_menu_external(request):
 
 def TestQR(request):
     return render(request,"Menu/testQR.html")
+
+
+
+
+def showFirebaseJS(request):
+    data = 'importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");' \
+           'importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js"); ' \
+           'var firebaseConfig = {' \
+           '        apiKey: "AIzaSyCecVymwb21GQM2YtueZEU-J6P8baVoYSs",' \
+           '        authDomain: "django-notify-24593.firebaseapp.com",' \
+           '        databaseURL: "https://django-notify-24593-default-rtdb.asia-southeast1.firebasedatabase.app",' \
+           '        projectId: "django-notify-24593",' \
+           '        storageBucket: "django-notify-24593.appspot.com",' \
+           '        messagingSenderId: "808899046407",' \
+           '        appId: "1:808899046407:web:cacddfc6db8310e3e9cea2",' \
+           ' };' \
+           'firebase.initializeApp(firebaseConfig);' \
+           'const messaging=firebase.messaging();' \
+           'messaging.setBackgroundMessageHandler(function (payload) {' \
+           '    console.log(payload);' \
+           '    const notification=JSON.parse(payload);' \
+           '    const notificationOption={' \
+           '        body:notification.body,' \
+           '        icon:notification.icon' \
+           '    };' \
+           '    return self.registration.showNotification(payload.notification.title,notificationOption);' \
+           '});'
+
+    return HttpResponse(data, content_type="text/javascript")

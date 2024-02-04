@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Admin_Panel.models import Table,Notification
+from Admin_Panel.models import Table,Notification,FCMDevice
 
 
 
@@ -8,4 +8,5 @@ from Admin_Panel.models import Table,Notification
 
 admin.site.register(Table)
 admin.site.register(Notification)
+admin.site.register(FCMDevice)
 

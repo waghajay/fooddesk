@@ -13,7 +13,9 @@ urlpatterns = [
     
     path('menu/', show_menu_external, name='show_menu_external'),
     
-    path("test/",TestQR,name="Test")
+    path("test/",TestQR,name="Test"),
+    
+    path('firebase-messaging-sw.js',showFirebaseJS,name="show_firebase_js"),
 
 
 

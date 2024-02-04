@@ -713,6 +713,68 @@
 
 
 	</div>
+
+
+	<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCecVymwb21GQM2YtueZEU-J6P8baVoYSs",
+        authDomain: "django-notify-24593.firebaseapp.com",
+        projectId: "django-notify-24593",
+        messagingSenderId: "808899046407",
+        appId: "1:808899046407:web:534881e3e09fb5b1e9cea2",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      const messaging = firebase.messaging();
+
+      // Request permission and get token
+      messaging.requestPermission()
+          .then(() => {
+              console.log('Notification permission granted.');
+              return messaging.getToken();
+          })
+          .then((token) => {
+              console.log('FCM Token:', token);
+              // Function to send the FCM token to the Django server
+              sendTokenToServer(token);
+          })
+          .catch((err) => {
+              console.log('Unable to get permission to notify.', err);
+          });
+
+      messaging.onMessage((payload) => {
+          console.log('Message received:', payload);
+          // Handle incoming message as needed
+      });
+
+      function sendTokenToServer(token) {
+        // Make an HTTP request to the Django endpoint to save the FCM token
+        fetch('/dash/store-fcm-token/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                // Include any additional headers if needed
+            },
+            body: `token=${token}`,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Handle the response from the server if necessary
+        })
+        .catch(error => {
+            console.error('Error sending FCM token to server:', error);
+        });
+    }
+  </script>
     <!--**********************************
         Main wrapper end
     ***********************************-->

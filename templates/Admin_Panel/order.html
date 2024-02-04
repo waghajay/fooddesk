@@ -524,6 +524,18 @@
         }
     </style>
 
+<script>
+    self.addEventListener('notificationclick', function (event) {
+        const clickAction = event.notification.data.click_action;
+
+        // Open your website or perform the desired action
+        // Example: Open a web page
+        event.waitUntil(
+            clients.openWindow(clickAction)
+        );
+    });
+</script>
+
 </body>
 
 </html>

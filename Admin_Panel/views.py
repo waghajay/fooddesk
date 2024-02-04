@@ -17,6 +17,7 @@ from Menu.models import MenuItems
 from django.shortcuts import HttpResponse
 from django.views.decorators.http import require_POST
 import json
+import requests
 
 # Create your views here.
 
@@ -335,3 +336,63 @@ def AdminLogout(request):
     logout(request)
     return redirect("AdminLogin")
 
+
+
+def send_notification(registration_ids, message_title, message_desc):
+    fcm_api_key = 'AAAAvFYj7Ac:APA91bF2NxwQ63-Thmxee6W9TMzzeFgthXL_rZj5tbhBMUNTbEMl6b9kst-Be_JY-nJCMZTYMlPxSTljCqEIetucHJ3DUjcUcko83TU_weXAHthf8w24t3yMXmZanTjRsrSZAKaqrXNk'
+    url = 'https://fcm.googleapis.com/fcm/send'
+
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'key=' + fcm_api_key,
+    }
+
+    payload = {
+        'registration_ids': registration_ids,
+        'priority': 'high',
+        'notification': {   
+            'body': message_desc,
+            'title': message_title,
+            'image': 'https://i.ibb.co/NVBH8CK/logo-full-3.jpg',
+            'icon': 'https://i.ibb.co/vq0DYc4/favicon.png',
+        },
+        'data': {
+            'click_action': 'https://fooddesk.onrender.com/dash/order/',
+        }
+    }
+
+    result = requests.post(url, data=json.dumps(payload), headers=headers)
+    return result.json()
+
+
+
+
+from Admin_Panel.models import FCMDevice
+
+@csrf_exempt
+def store_fcm_token(request):
+    if request.method == 'POST':
+        token = request.POST.get('token')
+        print("Token :--- ", token)
+        # Store the token in your database (modify this according to your model)
+        # Example assuming you have a model named FCMToken:
+        FCMDevice.objects.create(registration_id=token)
+        print("Saved")
+        return JsonResponse({'status': 'Token stored successfully'})
+    else:
+        print("NOt Saved")
+        return JsonResponse({'status': 'Invalid request method'})
+    
+    
+def send_push(request):
+    # Assuming FCMToken model has a field 'token' to store FCM tokens
+    registration_ids = FCMDevice.objects.values_list('registration_id', flat=True)
+    
+    # Convert the QuerySet to a list
+    registration_ids = list(registration_ids)
+
+    if registration_ids:
+        result = send_notification(registration_ids, 'New Order Received', 'Order Alert,,Order Alert............')
+        return HttpResponse(json.dumps(result), content_type='application/json')
+    else:
+        return HttpResponse('No FCM tokens found in the database', status=400)

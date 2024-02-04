@@ -755,5 +755,29 @@ domReady(function () {
 </style>
 
 </body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCecVymwb21GQM2YtueZEU-J6P8baVoYSs",
+      authDomain: "django-notify-24593.firebaseapp.com",
+      databaseURL: "https://django-notify-24593-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "django-notify-24593",
+      storageBucket: "django-notify-24593.appspot.com",
+      messagingSenderId: "808899046407",
+      appId: "1:808899046407:web:534881e3e09fb5b1e9cea2",
+      measurementId: "G-F8C4857ZDW"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 
 </html>

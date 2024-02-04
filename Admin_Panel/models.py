@@ -63,3 +63,10 @@ class Notification(models.Model):
     
     def __str__(self):
         return f"Order Id :- {self.order_id} -- Table Number:- {self.table_number} --- Price:- {self.total_price} -- Message :- {self.message}"
+    
+
+class FCMDevice(models.Model):
+    registration_id = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.registration_id
