@@ -24,12 +24,14 @@ Welcome to the FoodDesk Canteen Management System repository! This project aims 
 - **Integrations with Loyalty Programs:** Accumulate points or rewards for customer loyalty.
 - **Virtual Queues:** Manage peak hours with a virtual queue system.
 
-## Getting Started
+## Deployed Project
 
-To run this project locally, follow these steps:
+Visit (https://fooddesk.onrender.com/) to access the hosted application.
 
-1. Clone the repository:
+## Contributing
 
-   ```bash
-   git clone https://github.com/ajaywagh955/fooddesk.git
-   
+We welcome contributions! Feel free to submit bug reports, feature requests, or pull requests to help improve this project.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
