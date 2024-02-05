@@ -353,8 +353,6 @@ def send_notification(registration_ids, message_title, message_desc):
         'notification': {   
             'body': message_desc,
             'title': message_title,
-            'image': 'https://i.ibb.co/NVBH8CK/logo-full-3.jpg',
-            'icon': 'https://i.ibb.co/vq0DYc4/favicon.png',
         },
         'data': {
             'click_action': 'https://fooddesk.onrender.com/dash/order/',
