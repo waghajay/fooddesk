@@ -74,7 +74,7 @@ class CompletedOrder(models.Model):
         return f"Order ID: {self.order_id}--- Table Number:- {self.table_number} ----  Total Price: ₹{self.overall_total_price} --- Status:- {self.status} -- Payment Mode:-{self.payment_mode} --- Payment Status:- {self.payment_status}"
 
 class CompleteOrderItem(models.Model):
-    order = models.ForeignKey(CompletedOrder, related_name='items', on_delete=models.CASCADE)
+    order = models.ForeignKey(CompletedOrder, related_name='items', on_delete=models.CASCADE)   
     name = models.CharField(max_length=255)
     quantity = models.IntegerField()
     menu = models.ForeignKey(MenuItems, on_delete=models.CASCADE,null=True,blank=True)

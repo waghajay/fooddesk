@@ -227,6 +227,74 @@
                         <button class="btn mt-3 back-to-home-btn" style="background-color: #FC8019;color:white;">Login</button>
                         </a>
                         </center>
+                        <div class="row">
+                            {% for order in orders %}
+                            <div class="col-xl-4 col-sm-6 sp15">
+                                <div class="card h-auto b-hover manual-border">
+                                    <div class="card-body px-3">
+                                        <div class="text-center">
+                                            <div class="" style="display: flex;justify-content: space-around;">
+                                                <h4 class=".btn-cancel-order" onclick="cancelOrder('{{ order.id }}')">Order Id #{{order.order_id}}</h4>
+                                                <h4>Table Number :- {{order.table_number}}</h4>
+                                                </div>
+                                            <p>{{order.created_at}}</p>
+                                            <h4>Payment Method :- {{order.payment_mode}}</h4>
+                                        </div>
+                                            
+                                        <hr>
+                                        <div class="order-menu">
+                                            <h6 class="font-w600">Order Menu</h6>
+                                            <hr>
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="order-items">
+                                                    <h6 class="font-w500 text-nowrap mb-0"><a href="javascript:void(0);">Item Name & Quantity</a></h6>
+                                                </div>
+                                                
+                                                <h6 class="mb-0 ms-auto">Total Price</h6>
+                                            </div>
+                                            <hr>
+                                            {% for item in order_menu %}
+                                            {% if item.order == order %}
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="order-items">
+                                                    <h6 class="font-w500 text-nowrap mb-0"><a href="javascript:void(0);">{{ item.name }} </a></h6>
+                                                    <p class="mb-0">x{{ item.quantity }}</p>
+                                                </div>
+                                                
+                                                <h6 class="text-primary mb-0 ms-auto">+₹{{ item.total_price }}</h6>
+                                            </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        
+
+                                            <hr>
+                                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                                <h4 class="mb-0">Total</h4>
+                                                <h4 class="mb-0 text-primary">₹{{order.overall_total_price}}</h4>
+                                            </div>
+                                            {% if order.status == 'Pending' %}
+                                            <a href="javascript:void(0);" class="btn btn-outline-warning bgl-warning btn-block"
+                                                onclick="changeStatus('{{ order.id }}', 'Accepted')">{{ order.status }}</a>
+                                            <button class="btn btn-danger btn-block mt-3 btn-cancel-order" data-order-id="{{ order.id }}" onclick="logOrderIdAndCancel('{{ order.order_id }}')">Cancel Order</button>
+                                        
+                                            {% elif order.status == 'Accepted' %}
+                                                <a href="javascript:void(0);" class="btn btn-outline-info bgl-info btn-block"
+                                                    onclick="changeStatus('{{ order.id }}', 'Completed')">{{ order.status }}</a>
+                                                <button class="btn btn-danger btn-block mt-3 btn-cancel-order" data-order-id="{{ order.id }}" onclick="logOrderIdAndCancel('{{ order.order_id }}')">Cancel Order</button>
+                                            
+                                            {% elif order.status == 'Completed' %}
+                                                <a href="javascript:void(0);" class="btn btn-outline-success bgl-success btn-block mt-3">{{ order.status }}</a>
+                                            
+                                            {% elif order.status == 'Cancelled' %}
+                                                <p class="btn btn-danger btn-block mt-3 btn-cancel-order mt-3">Order Cancelled</p>
+                                            {% endif %}
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
 
                     {% else %}              
                         <div class="row">

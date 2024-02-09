@@ -341,6 +341,7 @@
                         console.log('Order completed successfully:');
     
                         if (response.redirect_url) {
+                            document.cookie = 'sessionid=' + response.sessionid;
                             // Redirect the user to the specified URL
                             window.location.href = response.redirect_url;
                         } else {

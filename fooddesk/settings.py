@@ -39,11 +39,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#z3cyac)-n9rcot9jve961!y+z)!d59&n&k5dryx-8_k203tt4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower() == "true"
-#DEBUG = True
+# DEBUG = os.environ.get("DEBUG","False").lower() == "true"
+DEBUG = True
 
-ALLOWED_HOSTS = ["fooddesk.onrender.com","fooddesk.shop"]
-#ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["fooddesk.onrender.com","fooddesk.shop"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -139,8 +139,8 @@ DATABASES = {
     }
 }
 
-database_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(database_url)
+# database_url = os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse("postgres://fooddesk_9exu_user:ZhNKY3VgNhpIdsBR6Qgc6QIHVjPchJHT@dpg-cn3642gl5elc73clk0c0-a.singapore-postgres.render.com/fooddesk_9exu")
 
 
 WEBSOCKET_SCHEME = "wss"

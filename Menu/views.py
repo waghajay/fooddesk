@@ -143,8 +143,8 @@ def complete_order(request):
                 
 
                 
-
-                return JsonResponse({'message': 'Order completed successfully With Cash Mode', 'order_id': order.order_id, 'redirect_url': reverse('order_history')})
+                request.session['order_id'] = str(order.order_id)
+                return JsonResponse({'message': 'Order completed successfully With Cash Mode', 'order_id': order.order_id, 'redirect_url': reverse('order_history'),'sessionid': request.session.session_key,})
             
             if payment_method == "online":
                 
@@ -188,7 +188,16 @@ def OrderHistory(request):
             
         return render(request, "Menu/order_history.html", {"orders": orders, "order_menu": order_items})
     else:
-        return render(request, "Menu/order_history.html",{"message":"You have not logged in Please Login first"})
+        order_id = request.session.get('order_id')
+        if order_id:
+            orders = CompletedOrder.objects.filter(order_id=order_id).order_by('-created_at')
+            order_items = []
+            
+            for order in orders:
+                items_for_order = CompleteOrderItem.objects.filter(order=order)
+                order_items.extend(items_for_order)
+            
+        return render(request, "Menu/order_history.html",{"message":f"You have not logged in Please Login first","orders": orders, "order_menu": order_items})
 
 
 @csrf_exempt
