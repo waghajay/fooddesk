@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- PAGE TITLE HERE -->
-    <title>FoodDesk - Online Food Delivery Admin Dashboard</title>
+    <title>FoodDesk - Menu</title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="{% static 'global/images/favicon.png'%}" />
@@ -44,12 +44,12 @@
     <!--*******************
         Preloader start
     ********************-->
-    <div id="preloader">
+    {% comment %} <div id="preloader">
         <div class="lds-ripple">
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> {% endcomment %}
 
     <!--*******************
         Preloader end
@@ -164,7 +164,7 @@
 
                             {% else %}
 
-                            <button class="btn btn-primary" style="margin-right:10px;background-color: #df6703;"><a href="{% url "login" %}"></a>Login</button>
+                            <button class="btn btn-primary" style="margin-right:10px;background-color: #df6703;color:white"><a style="color:white" href="{% url "login" %}">Login</a></button>
 
                             {% endif %}
                         </div>
@@ -184,23 +184,16 @@
                 <p class="menu-title style-1"> Main Menu</p>
                 <ul class="metismenu" id="menu">
                     <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
-                            <i class="bi bi-grid"></i>
-                            <span class="nav-text">Dashboard</span>
-                        </a>
+							<i class="bi bi-grid"></i>
+							<span class="nav-text">Dashboard</span>
+						</a>
                         <ul aria-expanded="false">
-                            <li><a href="index.html">Dashboard Light</a></li>
-                            <li><a href="index-2.html">Dashboard Dark</a></li>
-                            <li><a href="food-order.html">Food Order</a></li>
-                            <li><a href="favorite-menu.html">Favorite Menu</a></li>
-                            <li><a href="message.html">Message</a></li>
-                            <li><a href="order-history.html">Order History</a></li>
-                            <li><a href="notification.html">Notification</a></li>
-                            <li><a href="bill.html">Bill</a></li>
-                            <li><a href="setting.html">Setting</a></li>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="{% url "order_history" %}">Order History</a></li>
                         </ul>
 
                     </li>
-
+                    
                 </ul>
             </div>
         </div>

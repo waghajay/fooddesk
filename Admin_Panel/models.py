@@ -23,7 +23,7 @@ class Table(models.Model):
         token = jwt.encode(table_data, settings.SECRET_KEY, algorithm='HS256')
 
         # Generate QR code with the encoded token
-        external_url = f"https://fooddesk.onrender.com/menu/"
+        external_url = f"https://www.fooddesk.store/menu/"
         qr = qrcode.QRCode(
             version=1,
             error_correction=qrcode.constants.ERROR_CORRECT_L,

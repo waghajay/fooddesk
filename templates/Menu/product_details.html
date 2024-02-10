@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>FoodDesk - Online Food Delivery Admin Dashboard</title>
+    <title>Fooddesk - {{items.name}}</title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="{% static 'global/images/favicon.png'%}" />
@@ -34,12 +34,12 @@
     <!--*******************
         Preloader start
     ********************-->
-    <div id="preloader">
+    {% comment %} <div id="preloader">
         <div class="lds-ripple">
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> {% endcomment %}
     <!--*******************
         Preloader end
     ********************-->
