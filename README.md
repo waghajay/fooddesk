@@ -44,4 +44,4 @@ This project is open-source, and we welcome contributions from the community to 
 
 ### License
 
-The Canteen Management System is open-source software licensed under the [MIT License](LICENSE).
+The Canteen Management System is open-source software licensed under the [MIT License](LICENSE.md).
