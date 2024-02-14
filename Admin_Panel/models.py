@@ -12,6 +12,7 @@ class Table(models.Model):
     number = models.IntegerField(unique=True)
     qr_code_url = models.URLField(blank=True, null=True)
     qr_code_image = models.ImageField(upload_to='QR_codes/', blank=True, null=True)
+    qr_data = models.CharField(max_length=255,blank=True,null=True)
 
     def generate_qr_code(self):
         # Embed data about the table in the QR code
@@ -41,6 +42,7 @@ class Table(models.Model):
         # Save the QR code image in the model
         self.qr_code_image.save(f"{self.number}.png", ContentFile(buffer.getvalue()))
         self.qr_code_url = external_url + f"?qr_data={token}"
+        self.qr_data = token
 
     def save(self, *args, **kwargs):
         # Check if the model is being saved for the first time or if some other condition applies
@@ -48,6 +50,10 @@ class Table(models.Model):
             self.generate_qr_code()
 
         super().save(*args, **kwargs)
+        
+    def __str__(self):
+        return f"Table Number :- {self.number}"
+    
         
 
 # 1. 👇 Add the following line
