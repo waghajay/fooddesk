@@ -16,6 +16,9 @@ urlpatterns = [
     path("test/",TestQR,name="Test"),
     
     path('firebase-messaging-sw.js',showFirebaseJS,name="show_firebase_js"),
+    
+    path('download_invoice/<int:order_id>/', DownloadInvoiceView.as_view(), name='download_invoice'),
+
 
 
 

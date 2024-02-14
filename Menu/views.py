@@ -264,3 +264,42 @@ def showFirebaseJS(request):
            '});'
 
     return HttpResponse(data, content_type="text/javascript")
+
+from django.http import HttpResponse
+from django.template.loader import get_template
+from django.views import View
+from .models import CompletedOrder
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle
+from reportlab.lib.styles import getSampleStyleSheet
+
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from xhtml2pdf import pisa
+
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from xhtml2pdf import pisa
+
+class DownloadInvoiceView(View):
+    def get(self, request, order_id):
+        # Get the order object
+        order = CompletedOrder.objects.get(order_id=order_id)
+        order_items = CompleteOrderItem.objects.filter(order=order)
+        
+        
+
+        # Render HTML template with dynamic data
+        html_content = render_to_string('Menu/invoice_template.html', {'order': order,"order_items":order_items})
+
+        # Create PDF
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="invoice_{order_id}.pdf"'
+
+        # Generate PDF
+        pisa.CreatePDF(html_content, dest=response)
+
+        return response
+
+

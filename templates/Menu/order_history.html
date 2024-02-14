@@ -271,6 +271,7 @@
                                             <div class="d-flex align-items-center justify-content-between mb-4">
                                                 <h4 class="mb-0">Total</h4>
                                                 <h4 class="mb-0 text-primary">₹{{order.overall_total_price}}</h4>
+                                                <a href="{% url 'download_invoice' order.order_id %}" class="btn btn-primary">Download Invoice</a>
                                             </div>
                                             {% if order.status == 'Pending' %}
                                             <a href="javascript:void(0);" class="btn btn-outline-warning bgl-warning btn-block"
