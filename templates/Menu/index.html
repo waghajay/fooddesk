@@ -164,6 +164,30 @@
             Header end ti-comment-alt
         ***********************************-->
 
+                <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="dlabnav border-right">
+            <div class="dlabnav-scroll">
+                <p class="menu-title style-1"> Main Menu</p>
+                <ul class="metismenu" id="menu">
+                    <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+							<i class="bi bi-grid"></i>
+							<span class="nav-text">Dashboard</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{% url "index" %}">Home</a></li>
+                            <li><a href="{% url "order_history" %}">Order History</a></li>
+                        </ul>
+
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+
         <!--**********************************
             Content body start
         ***********************************-->
