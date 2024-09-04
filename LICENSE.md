@@ -1,5 +1,3 @@
-MIT License
-
 Copyright @ 2024 Fooddesk.store
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
